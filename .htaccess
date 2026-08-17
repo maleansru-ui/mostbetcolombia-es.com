@@ -1,0 +1,187 @@
+##############################################
+# .htaccess — mostbetcolombia-es.com
+# Порядок: PHP → редирект оффера → HTTPS → WWW → URL →
+#          Безопасность → Заголовки → noindex → Кэш → Сжатие
+##############################################
+
+# php -- BEGIN cPanel-generated handler, do not edit
+<IfModule mime_module>
+    AddHandler application/x-httpd-ea-php82 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler
+
+##############################################
+# 0. ПАРТНЁРСКИЙ РЕДИРЕКТ
+# ЗАМЕНИТЬ URL на свою CO-кампанию из партнёрки!
+# (тот же URL продублирован в script.js — константа OFFER)
+##############################################
+Redirect 301 /go https://xtsplkmost.com/8BPU?sub1=mostbetcolombia-es.com
+
+##############################################
+# 1. REWRITE ENGINE
+##############################################
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    Options -Indexes
+
+    # ── HTTPS-редирект ──────────────────────
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # ── www → non-www (canonical без www) ───
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+    # ── Блокировка старых ботов ─────────────
+    RewriteCond %{HTTP_USER_AGENT} Chrome/44 [NC]
+    RewriteRule .* - [F,L]
+
+    # ── Убрать index.html из URL ────────────
+    RewriteCond %{THE_REQUEST} ^.*/index\.html [NC]
+    RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
+
+    # ── Убрать расширение .html ─────────────
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+/)*[^\.]+\.html\ HTTP/
+    RewriteRule ^(([^/]+/)*[^\.]+)\.html$ /$1 [R=301,L]
+
+    # Внутренний map: URL без .html → файл .html
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.+?)/?$ $1.html [L]
+
+    # ── JS MIME-тип ─────────────────────────
+    RewriteRule ^.*\.js$ - [T=text/javascript]
+
+</IfModule>
+
+
+##############################################
+# 2. БЛОКИРОВКА УЯЗВИМЫХ ФАЙЛОВ
+##############################################
+<FilesMatch "(xmlrpc\.php|wp-login\.php|wp-signup\.php|phpinfo\.php|info\.php|_phpinfo\.php|\.env|\.git|composer\.(json|lock)|package\.json)">
+    Require all denied
+</FilesMatch>
+
+<Files ~ "^\.ht">
+    Require all denied
+</Files>
+
+<FilesMatch "\.(bak|old|orig|save|swp|tmp|~)$">
+    Require all denied
+</FilesMatch>
+
+
+##############################################
+# 3. HTTP-ЗАГОЛОВКИ БЕЗОПАСНОСТИ И SEO
+##############################################
+<IfModule mod_headers.c>
+
+    Header always set X-Content-Type-Options    "nosniff"
+    Header always set X-Frame-Options           "SAMEORIGIN"
+    Header always set X-XSS-Protection          "1; mode=block"
+    Header always set Referrer-Policy           "strict-origin-when-cross-origin"
+
+    # HSTS — включить только после проверки, что HTTPS работает!
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    Header always set Access-Control-Allow-Origin "*"
+
+    Header unset X-Robots-Tag
+    Header always unset X-Powered-By
+    Header always unset Server
+
+    Header set Cache-Control "public, max-age=14400, must-revalidate"
+
+</IfModule>
+
+
+##############################################
+# 3.1. NOINDEX ДЛЯ ЮРИДИЧЕСКИХ СТРАНИЦ
+# Дублирует <meta name="robots"> в самих файлах —
+# заголовок надёжнее, работает и при прямом заходе на .html
+##############################################
+<IfModule mod_setenvif.c>
+    SetEnvIf Request_URI "^/(terminos|privacidad|cookies|juego-responsable)(\.html)?$" NOINDEX_PAGE
+</IfModule>
+<IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet" env=NOINDEX_PAGE
+</IfModule>
+
+
+##############################################
+# 4. КЭШИРОВАНИЕ ПО ТИПАМ ФАЙЛОВ
+##############################################
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    ExpiresByType text/html                     "access plus 0 seconds"
+
+    ExpiresByType text/css                      "access plus 30 days"
+    ExpiresByType application/javascript        "access plus 30 days"
+    ExpiresByType text/javascript               "access plus 30 days"
+
+    ExpiresByType image/webp                    "access plus 1 year"
+    ExpiresByType image/png                     "access plus 1 year"
+    ExpiresByType image/jpeg                    "access plus 1 year"
+    ExpiresByType image/gif                     "access plus 1 year"
+    ExpiresByType image/svg+xml                 "access plus 1 year"
+    ExpiresByType image/x-icon                  "access plus 1 year"
+
+    ExpiresByType font/woff                     "access plus 1 year"
+    ExpiresByType font/woff2                    "access plus 1 year"
+
+    ExpiresByType application/json              "access plus 0 seconds"
+    ExpiresByType application/xml               "access plus 1 day"
+    ExpiresByType text/xml                      "access plus 1 day"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|htm|php)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header unset Expires
+    </FilesMatch>
+
+    <FilesMatch "\.(webp|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|otf)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=2592000, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+
+##############################################
+# 5. GZIP-СЖАТИЕ
+##############################################
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|gz|zip|bz2|rar|7z)$ no-gzip dont-vary
+    Header append Vary Accept-Encoding
+</IfModule>
+
+
+##############################################
+# 6. СТРАНИЦЫ ОШИБОК
+##############################################
+# 404 отдаёт отдельную страницу с кодом 404.
+# Раньше стояла /index.html — это «мягкий 404»: Google видел копию
+# главной по несуществующим URL и мог пометить их как дубли.
+ErrorDocument 400 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html

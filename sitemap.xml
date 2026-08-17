@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================
+     SITEMAP mostbetcolombia-es.com
+     Внутри только индексируемые страницы. Юридические
+     (terminos, privacidad, cookies, juego-responsable) закрыты
+     noindex и в карту НЕ добавляются.
+     ============================================================ -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/home-hero.webp</image:loc>
+      <image:caption>Mostbet Colombia — casino online y apuestas deportivas en pesos colombianos</image:caption>
+      <image:title>Mostbet Colombia 2026 — casino y apuestas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/home-casino.webp</image:loc>
+      <image:caption>Mostbet Casino Colombia — más de 8.000 juegos y tragamonedas</image:caption>
+      <image:title>Mostbet Casino Colombia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/home-mercados.webp</image:loc>
+      <image:caption>Apuestas deportivas en Mostbet Colombia — Liga BetPlay y eSports</image:caption>
+      <image:title>Apuestas deportivas Mostbet Colombia</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/bonos</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/bonos-hero.webp</image:loc>
+      <image:caption>Bonos de Mostbet Colombia: 125 % y 250 giros gratis</image:caption>
+      <image:title>Bonos y promociones de Mostbet Colombia</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/codigo-promocional</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/bonos-bienvenida.webp</image:loc>
+      <image:caption>Código promocional Mostbet Colombia: bono del 125 % y 250 giros gratis</image:caption>
+      <image:title>Código promocional Mostbet Colombia</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/casino</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/home-slots.webp</image:loc>
+      <image:caption>Tragamonedas y casino en vivo de Mostbet Colombia</image:caption>
+      <image:title>Mostbet Casino — tragamonedas y mesas en vivo</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/aviator</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/aviator-hero.webp</image:loc>
+      <image:caption>Mostbet Aviator en Colombia — juego crash con RTP del 97 %</image:caption>
+      <image:title>Mostbet Aviator Colombia</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/apuestas</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/app</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/app-hero.webp</image:loc>
+      <image:caption>App de Mostbet Colombia para Android e iOS</image:caption>
+      <image:title>Descargar la app de Mostbet en Colombia</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/pagos</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://mostbetcolombia-es.com/assets/img/co/pagos-hero.webp</image:loc>
+      <image:caption>Métodos de pago de Mostbet Colombia: Nequi, PSE y más</image:caption>
+      <image:title>Métodos de pago de Mostbet Colombia</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/login</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/sobre-nosotros</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://mostbetcolombia-es.com/contacto</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>

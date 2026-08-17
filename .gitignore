@@ -1,0 +1,21 @@
+# архивы — в репозиторий не нужны
+*.zip
+*.rar
+*.7z
+
+# редактор
+.vscode/
+
+# мусор ОС
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# служебное
+*.bak
+*.old
+*.orig
+*.save
+*.swp
+*.tmp
+*~

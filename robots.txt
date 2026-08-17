@@ -1,0 +1,45 @@
+User-agent: *
+Allow: /
+
+# Служебные / юридические страницы — не индексируем
+Disallow: /terminos
+Disallow: /privacidad
+Disallow: /cookies
+Disallow: /juego-responsable
+Disallow: /go
+Disallow: /admin/
+Disallow: /private/
+Disallow: /?s=
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /terminos
+Disallow: /privacidad
+Disallow: /cookies
+Disallow: /juego-responsable
+Disallow: /go
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /terminos
+Disallow: /privacidad
+Disallow: /cookies
+Disallow: /juego-responsable
+Disallow: /go
+Crawl-delay: 2
+
+# Яндекс
+User-agent: Yandex
+Allow: /
+Disallow: /terminos
+Disallow: /privacidad
+Disallow: /cookies
+Disallow: /juego-responsable
+Disallow: /go
+Crawl-delay: 1
+
+Host: mostbetcolombia-es.com
+Sitemap: https://mostbetcolombia-es.com/sitemap.xml

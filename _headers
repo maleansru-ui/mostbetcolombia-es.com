@@ -1,0 +1,73 @@
+##############################################
+# _headers — mostbetcolombia-es.com
+# Cloudflare Pages. Замена секций 3, 3.1 и 4 из .htaccess
+# Лимиты: 100 правил, 2000 символов на строку.
+#
+# ВАЖНО: если один и тот же заголовок задан в двух совпавших
+# правилах, значения склеиваются через запятую. Поэтому
+# Cache-Control нигде не пересекается между блоками.
+#
+# Комментарии допустимы только с начала строки, не внутри блока.
+##############################################
+
+
+##############################################
+# 1. ЗАГОЛОВКИ БЕЗОПАСНОСТИ (секция 3 .htaccess)
+#
+# HSTS включить после проверки, что HTTPS работает:
+# добавить в блок ниже строку
+#   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+# либо включить в панели Cloudflare: SSL/TLS -> Edge Certificates -> HSTS
+##############################################
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+
+##############################################
+# 2. NOINDEX ДЛЯ ЮРИДИЧЕСКИХ СТРАНИЦ (секция 3.1 .htaccess)
+##############################################
+
+/terminos
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+/privacidad
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+/cookies
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+/juego-responsable
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+
+##############################################
+# 3. КЭШИРОВАНИЕ (секция 4 .htaccess)
+#
+# HTML здесь намеренно отсутствует: Cloudflare Pages по умолчанию
+# отдаёт для него Cache-Control: public, max-age=0, must-revalidate
+# + ETag. Это ровно то, что делали ExpiresByType text/html "0 seconds"
+# и no-cache для .html в .htaccess.
+##############################################
+
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/style.css
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+/script.js
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Cache-Control: public, max-age=86400

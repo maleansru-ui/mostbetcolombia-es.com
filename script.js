@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Партнёрские переходы ---------- */
   /* ЗАМЕНИТЬ ссылку на свою CO-кампанию из партнёрки */
-  var OFFER = 'https://xtsplkmost.com/8BPU?sub1=mostbetcolombia-es.com';
+  var OFFER = 'https://qydnte.com/8BPU?sub1=mostbetcolombia-es.com';
 
   document.querySelectorAll('a[href="/go"], a[href="/go/"]').forEach(function (link) {
     link.setAttribute('rel', 'nofollow noopener');

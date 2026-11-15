@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Партнёрские переходы ---------- */
   /* ЗАМЕНИТЬ ссылку на свою CO-кампанию из партнёрки */
-  var OFFER = 'https://searchdealers.click/colombiaes';
+  var OFFER = 'https://searchdealers.click/mostbetcolombia';
 
   document.querySelectorAll('a[href="/go"], a[href="/go/"]').forEach(function (link) {
     link.setAttribute('rel', 'nofollow noopener');

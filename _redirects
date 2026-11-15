@@ -14,8 +14,8 @@
 # ЗАМЕНИТЬ URL на свою CO-кампанию из партнёрки!
 # Тот же URL продублирован в script.js — константа OFFER (строка 205)
 ##############################################
-/go    https://searchdealers.click/colombiaes    301
-/go/   https://searchdealers.click/colombiaes    301
+/go    https://searchdealers.click/mostbetcolombia    301
+/go/   https://searchdealers.click/mostbetcolombia    301
 
 ##############################################
 # Обрезка .html и index.html НЕ НУЖНА:

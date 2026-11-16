@@ -15,7 +15,7 @@
 # ЗАМЕНИТЬ URL на свою CO-кампанию из партнёрки!
 # (тот же URL продублирован в script.js — константа OFFER)
 ##############################################
-Redirect 301 /go https://searchdealers.click/mostbetcolombia
+Redirect 301 /go https://searchdealers.click/mostbrand35?utm_source=mostbetcolombia-es.com
 
 ##############################################
 # 1. REWRITE ENGINE
